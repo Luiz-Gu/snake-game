@@ -5,5 +5,15 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: deeppink;
+    color: #617E06;
+}
+
+.refresh-button{
+    top: 300px;
+    right: 370px;
+    width: 100px;
+    height: 70px;
+}
+.titulo{
+    padding-right: 5cm;
 }
