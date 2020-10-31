@@ -7,6 +7,10 @@ let snake = []
      y: 8 * box
  }
  let direction = "right"
+ let food = {
+     x: Math.floor(Math.random() * 15 + 1 ) * box,// floor retira A parte frutuante e o random da um numero aleatorio ate zero//  
+     y: Math.floor(Math.random() * 15 + 1 ) * box 
+ }
 
     function criarBG() {
         context.fillStyle = "lightgreen" //define o estilo do background
@@ -20,6 +24,10 @@ function criarCobrinha(){
 
     }
 }
+function drawnFood() {
+    context.fillStyle = "gray";
+    context.fillRect(food.x, food.y, box, box);
+}
 
 document.addEventListener("keydown", update);// cria um event para comandos de teclas
 
@@ -31,20 +39,20 @@ function update(event){
 }
 
 function iniciarJogo(){
-    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
+    if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0; // define para a cobra n ultrapssar os limetes da tela
     if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
     if(snake[0].y > 15 * box && direction == "down") snake [0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
+    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;        
 
     
     criarBG();
     criarCobrinha();
-    
+    drawnFood();
 
     let snakeX = snake[0].x
     let snakeY = snake[0].y
 
-    if(direction == "right") snakeX += box;
+    if(direction == "right") snakeX += box; //define os movimentos da cobra
     if(direction == "left") snakeX -= box;
     if(direction == "up") snakeY -= box;
     if(direction == "down") snakeY += box;
